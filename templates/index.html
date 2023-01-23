@@ -11,6 +11,52 @@
 	<header>
 		<span><h1>Task Manager</h1></span>
 	</header>
+	<main>
+		<ul>
+			<li>
+				<input type="checkbox"/>
+				<div class="task-item">
+					<p class="task-id">#1</p>
+					 
+					<div class="calculando-flex">
+						<p class="task-title">Tarefa</p>
+					</div>
+					<img lang="en" src="{{ url_for('static', filename='edit-icon.svg') }}" alt="edit icon" />
+					<img lang="en" src="{{ url_for('static', filename='trash-icon.svg') }}" alt="trash icon" />
+				</div>
+				
+			</li>
+			<li>
+				<input type="checkbox"/>
+				<div class="task-item">
+					<p class="task-id">#2</p>
+					 
+					<div class="calculando-flex">
+						<p class="task-title">Tarefa</p>
+					</div>
+					<img lang="en" src="{{ url_for('static', filename='edit-icon.svg') }}" alt="edit icon" />
+					<img lang="en" src="{{ url_for('static', filename='trash-icon.svg') }}" alt="trash icon" />
+				</div>
+				
+			</li>
+			<li>
+				<input type="checkbox"/>
+				<div class="task-item">
+
+				</div>
+			</li>
+			<li>
+				<input type="checkbox"/>
+				<div class="task-item">
+
+				</div>
+			</li>
+		</ul>
+				<form class="new-task" method="POST" action="/">
+					<input type="text" placeholder="Digite o nome da tarefa..." />
+					<input type="submit" value="Adicionar"/>
+				</form>				
+	</main>
 
 </body>
 </html>

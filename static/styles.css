@@ -11,6 +11,7 @@ background INPUT: #D9D9D9
 
 
 * {margin: 0; padding: 0; box-sizing: border-box;
+
 }
 
 body {
@@ -42,3 +43,97 @@ h1 {
     letter-spacing: 20px;
 }
 
+main {
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+li {
+	list-style-type:none;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	/*REFATORAR
+	border:1px solid red;*/
+}
+
+input[type=checkbox] {
+	width: 30px;
+	height: 30px;
+}
+
+.task-item {
+	display:flex;
+	align-items: center;
+	background: #D9D9D9;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+	width: 1000px;
+	height: 40px;
+	margin: 10px;
+	border-radius: 10px;
+}
+
+/*REFATORAR
+	border:1px solid blue;
+*/
+.task-item * {
+}
+
+.task-item .task-id {
+	flex: 8%;
+	border: 1px solid red;
+	height:40px;
+	border-right: 4px solid #232123;
+}
+
+.task-title {
+	margin-left: 2px;
+}
+
+/*REFATORAR*/
+.calculando-flex {
+	flex: 92%;
+}
+
+.task-item img {
+	width: 30px;
+	height: 30px;
+	margin:2px;
+}
+
+.new-task {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 50px;
+}
+
+.new-task input[type=text] {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+	width: 1000px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+.new-task input[type=text]:focus {
+	outline: none;
+}
+
+.new-task input[type=submit] {
+	background: #D9D9D9;    font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	width: 150px;
+	height: 50px;
+	margin:10px;
+	border-radius: 10px;
+}
+.new-task input[type=submit]:hover {
+	background: linear-gradient(87.96deg,#fb0234 34.05%,#ff8f01 99.97%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+}
