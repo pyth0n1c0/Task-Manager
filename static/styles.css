@@ -1,0 +1,44 @@
+/*
+background: linear-gradient(90deg, rgba(254,169,16,1) 33%, rgba(252,0,0,1) 100%); 
+#ff5858 #f09819
+#f12711 #f5af19 
+linear-gradient(87.96deg,#fb0234 34.05%,#ff8f01 99.97%); Globoplay Gradient
+background INDEX: #232123
+background INPUT: #D9D9D9  
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap');
+
+
+
+* {margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	background: #232123;
+}
+
+header {
+	display:flex;
+	justify-content: row;
+	justify-content: center;
+	align-items: center;
+	height: 30vh;
+	}
+
+span {
+	background: #D9D9D9;
+	padding: 20px;
+	border-radius:20px;
+}
+
+h1 {
+	background: linear-gradient(87.96deg,#fb0234 34.05%,#ff8f01 99.97%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 80px;
+    font-weight: 900;
+    letter-spacing: 20px;
+}
+
