@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-	BR">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,48 +14,32 @@
 	<main>
 		<ul>
 			<li>
-				<input type="checkbox"/>
-				<div class="task-item">
-					<p class="task-id">#1</p>
-					 
-					<div class="calculando-flex">
-						<p class="task-title">Tarefa</p>
-					</div>
-					<img lang="en" src="{{ url_for('static', filename='edit-icon.svg') }}" alt="edit icon" />
-					<img lang="en" src="{{ url_for('static', filename='trash-icon.svg') }}" alt="trash icon" />
-				</div>
-				
-			</li>
-			<li>
-				<input type="checkbox"/>
-				<div class="task-item">
-					<p class="task-id">#2</p>
-					 
-					<div class="calculando-flex">
-						<p class="task-title">Tarefa</p>
-					</div>
-					<img lang="en" src="{{ url_for('static', filename='edit-icon.svg') }}" alt="edit icon" />
-					<img lang="en" src="{{ url_for('static', filename='trash-icon.svg') }}" alt="trash icon" />
-				</div>
-				
-			</li>
-			<li>
-				<input type="checkbox"/>
-				<div class="task-item">
+				{% if tasks %}
+					{% for i,t in enumerate(tasks) %}
+						
+						<input type="checkbox"/>
+						<div class="task-item">
+							<p class="task-id">{{ i }}</p>
+							 
+							<div class="calculando-flex">
+								<p class="task-title">{{ t }}</p>
+							</div>
+							<img lang="en" src="{{ url_for('static', filename='edit-icon.svg') }}" alt="edit icon" />
+							<img lang="en" src="{{ url_for('static', filename='trash-icon.svg') }}" alt="trash icon" />
+						</div>
 
-				</div>
+					{% endfor%}
+				{% else %}
+					<div class="no-tasks">
+						<p>NO TASKS</p>
+					</div>
+				{% endif %}				
 			</li>
-			<li>
-				<input type="checkbox"/>
-				<div class="task-item">
-
-				</div>
-			</li>
-		</ul>
-				<form class="new-task" method="POST" action="/">
-					<input type="text" placeholder="Digite o nome da tarefa..." />
-					<input type="submit" value="Adicionar"/>
-				</form>				
+		</ul>		
+		<form class="new-task" method="POST" action="/">
+			<input type="text" name="new-task" placeholder="Digite o nome da tarefa..." />
+			<input type="submit" value="Adicionar"/>
+		</form>				
 	</main>
 
 </body>

@@ -8,13 +8,11 @@ background INPUT: #D9D9D9
 */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap');
 
-
-
 * {margin: 0; padding: 0; box-sizing: border-box;
 
 }
 
-body {
+body {	
 	width: 100%;
 	background: #232123;
 }
@@ -76,15 +74,10 @@ input[type=checkbox] {
 	border-radius: 10px;
 }
 
-/*REFATORAR
-	border:1px solid blue;
-*/
-.task-item * {
-}
-
 .task-item .task-id {
 	flex: 8%;
-	border: 1px solid red;
+	display: flex;
+	align-items: center;
 	height:40px;
 	border-right: 4px solid #232123;
 }
@@ -103,6 +96,29 @@ input[type=checkbox] {
 	height: 30px;
 	margin:2px;
 }
+/*START - NO TASKS
+*/
+.no-tasks {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(87.96deg,#fb0234 34.05%,#ff8f01 99.97%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.no-tasks p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-style: italic;
+	border-top: 2px solid red;
+	border-bottom: 2px solid red;
+	padding: 20px;
+
+}
+
+/*END - NO TASKS*/
 
 .new-task {
 	display: flex;
