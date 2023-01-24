@@ -13,28 +13,29 @@
 	</header>
 	<main>
 		<ul>
-			<li>
-				{% if tasks %}
-					{% for i,t in enumerate(tasks) %}
-						
-						<input type="checkbox"/>
-						<div class="task-item">
-							<p class="task-id">{{ i }}</p>
-							 
-							<div class="calculando-flex">
-								<p class="task-title">{{ t }}</p>
+			{% if data %}
+					{% for index, task in data.items() %}
+					<li>
+						<div class="list-item">
+							<input type="checkbox"/>
+							<div class="task-item">
+								<p class="task-id">{{ index }}</p>
+								 
+								<div class="calculando-flex">
+									<p class="task-title">{{ task }}</p>
+								</div>
+								<img lang="en" src="{{ url_for('static', filename='edit-icon.svg') }}" alt="edit icon" />
+								<img lang="en" src="{{ url_for('static', filename='trash-icon.svg') }}" alt="trash icon" />
 							</div>
-							<img lang="en" src="{{ url_for('static', filename='edit-icon.svg') }}" alt="edit icon" />
-							<img lang="en" src="{{ url_for('static', filename='trash-icon.svg') }}" alt="trash icon" />
 						</div>
-
+					</li>
 					{% endfor%}
 				{% else %}
 					<div class="no-tasks">
 						<p>NO TASKS</p>
 					</div>
 				{% endif %}				
-			</li>
+			
 		</ul>		
 		<form class="new-task" method="POST" action="/">
 			<input type="text" name="new-task" placeholder="Digite o nome da tarefa..." />

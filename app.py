@@ -31,6 +31,14 @@ def create_app():
 				db.session.commit()
 				print('[+] Tarefa ADD')
 
-		return render_template('index.html')
+		data = {}
+		tasks = Task.query.all()
+
+		for t in tasks:
+			data[str(t.id)] = t.task
+
+		print(data)
+
+		return render_template('index.html', data=data)
 
 	return app
