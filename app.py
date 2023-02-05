@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 
@@ -49,8 +49,11 @@ def create_app():
 
 		@app.route('/endpoint', methods=['DELETE'])
 		def delete():	
-			print(request.get_json())
-			return 'OK'
+			id = request.get_json()['task-id']
+			task = Task.query.get(id)
+			db.session.delete(task)
+			db.session.commit()
 
+			return jsonify( {'status': 'OK'} )
 
 	return app

@@ -51,7 +51,8 @@
 					},
 					body: JSON.stringify({'task-id': id})
 				})
-				.then(confirm => console.log(confirm.statusText));
+				.then(comfirm => delete_id = document.getElementById('task-'+id))
+				.then(delete_id => delete_id.outerHTML = '');
 
 		}
 
