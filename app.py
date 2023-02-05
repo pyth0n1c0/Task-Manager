@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 
@@ -8,6 +8,7 @@ def create_database(app):
 	with app.app_context():
 		if not path.exists(path.abspath("storage.db")):
 			db.create_all()
+
 
 def create_app():
 	app = Flask(__name__, template_folder='templates', static_folder='static',)
@@ -20,25 +21,36 @@ def create_app():
 	db.init_app(app)
 	create_database(app)
 
-	@app.route('/', methods=['GET', 'POST'])
-	def index():
-		if request.method == 'POST':
+
+	class TaskManager():
+		@app.route('/')
+		def index():
+			data = {}
+			all_tasks = Task.query.all()
+
+			for task in all_tasks:
+				data[str(task.id)] = task.title			
+
+			return render_template('index.html', data=data)
+
+		@app.route('/endpoint', methods=['POST'])
+		def create():
 			new_task = request.form.get('new-task')
 
 			if new_task != '':
 				task = Task(new_task)
 				db.session.add(task)
 				db.session.commit()
-				print('[+] Tarefa ADD')
+			return redirect(url_for('index'))
+		
+		@app.route('/endpoint', methods=['PUT'])
+		def rename():
+			...
 
-		data = {}
-		tasks = Task.query.all()
+		@app.route('/endpoint', methods=['DELETE'])
+		def delete():	
+			print(request.get_json())
+			return 'OK'
 
-		for t in tasks:
-			data[str(t.id)] = t.task
-
-		print(data)
-
-		return render_template('index.html', data=data)
 
 	return app

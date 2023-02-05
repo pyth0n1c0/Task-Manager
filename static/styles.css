@@ -24,7 +24,7 @@ header {
 	justify-content: row;
 	justify-content: center;
 	align-items: center;
-	height: 30vh;
+	margin:80px;
 	}
 
 span {
@@ -51,28 +51,33 @@ ul {
 	align-items: center;
 }
 
-li {
-	list-style-type:none;
-	/*REFATORAR*/
+li { list-style-type: none}
+
+li * {
 }
 
+.list-item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
 
 input[type=checkbox] {
 	width: 30px;
 	height: 30px;
+	margin-right: 10px;
 }
 
 .task-item {
-
 	display:flex;
 	align-items: center;
+
 	background: #D9D9D9;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
 	width: 1000px;
 	height: 40px;
 	margin: 10px;
-	margin-left:0px;
 	border-radius: 10px;
 }
 
@@ -82,7 +87,7 @@ input[type=checkbox] {
 	align-items: center;
 	height:40px;
 	border-right: 4px solid #232123;
-}
+	}
 
 .task-title {
 	margin-left: 2px;
@@ -96,10 +101,17 @@ input[type=checkbox] {
 .task-item img {
 	width: 30px;
 	height: 30px;
-	margin:2px;
+	margin:3px;
 }
-/*START - NO TASKS
-*/
+
+.task-item img:hover {
+	cursor: pointer;
+	background: linear-gradient(87.96deg,#fb0234 34.05%,#ff8f01 99.97%);
+	border-radius: 10px;
+}
+
+/*START - Condition: No Tasks*/
+
 .no-tasks {
 	display: flex;
 	flex-direction: column;
@@ -120,8 +132,9 @@ input[type=checkbox] {
 
 }
 
-/*END - NO TASKS*/
+/*END - Condition: No Tasks*/
 
+/*START - New Tasks*/
 .new-task {
 	display: flex;
 	flex-direction: column;
@@ -153,5 +166,5 @@ input[type=checkbox] {
 	background: linear-gradient(87.96deg,#fb0234 34.05%,#ff8f01 99.97%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-
 }
+/*END- New Tasks*/

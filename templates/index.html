@@ -9,39 +9,53 @@
 </head>
 <body>
 	<header>
-		<span><h1>Task Manager</h1></span>
+		<span><h1 lang="en">Task Manager</h1></span>
 	</header>
 	<main>
 		<ul>
 			{% if data %}
-					{% for index, task in data.items() %}
+				{% for id, task in data.items() %}
 					<li>
-						<div class="list-item">
+						<div id="task-{{ id }}" class="list-item">
 							<input type="checkbox"/>
 							<div class="task-item">
-								<p class="task-id">{{ index }}</p>
-								 
-								<div class="calculando-flex">
+								<p id="task-id" class="task-id">#{{ id }}</p> 
+								<div class="calculando-flex"> <!--REFATORAR-->
 									<p class="task-title">{{ task }}</p>
 								</div>
 								<img lang="en" src="{{ url_for('static', filename='edit-icon.svg') }}" alt="edit icon" />
-								<img lang="en" src="{{ url_for('static', filename='trash-icon.svg') }}" alt="trash icon" />
+								<img lang="en" src="{{ url_for('static', filename='trash-icon.svg') }}" alt="trash icon" onclick="deleteID({{id}})"/>
 							</div>
 						</div>
 					</li>
-					{% endfor%}
-				{% else %}
-					<div class="no-tasks">
-						<p>NO TASKS</p>
-					</div>
-				{% endif %}				
-			
-		</ul>		
-		<form class="new-task" method="POST" action="/">
+				{% endfor%}
+			{% else %}
+				<div class="no-tasks">
+					<p>SEM TAREFAS</p>
+				</div>
+			{% endif %}
+		</ul>	
+		<form class="new-task" method="POST" action="/endpoint">
 			<input type="text" name="new-task" placeholder="Digite o nome da tarefa..." />
 			<input type="submit" value="Adicionar"/>
-		</form>				
+		</form>
 	</main>
+
+	<script>
+		function deleteID(id) {
+			const response = fetch('/endpoint', 
+				{
+					method: 'DELETE',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({'task-id': id})
+				})
+				.then(confirm => console.log(confirm.statusText));
+
+		}
+
+	</script>
 
 </body>
 </html>
