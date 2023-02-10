@@ -13,7 +13,6 @@ def create_database(app):
 def create_app():
 	app = Flask(__name__, template_folder='templates', static_folder='static',)
 	app.config.from_pyfile('config.py')
-
 	print(app.config)
 
 	from .models import Task
@@ -29,7 +28,7 @@ def create_app():
 			all_tasks = Task.query.all()
 
 			for task in all_tasks:
-				data[str(task.id)] = task.title			
+				data[str(task.id)] = task.title
 
 			return render_template('index.html', data=data)
 
@@ -41,14 +40,14 @@ def create_app():
 				task = Task(new_task)
 				db.session.add(task)
 				db.session.commit()
-			return redirect(url_for('index'))
-		
+			return redirect(url_for('index'), code=302)
+
 		@app.route('/endpoint', methods=['PUT'])
 		def rename():
 			...
 
 		@app.route('/endpoint', methods=['DELETE'])
-		def delete():	
+		def delete():
 			id = request.get_json()['task-id']
 			task = Task.query.get(id)
 			db.session.delete(task)

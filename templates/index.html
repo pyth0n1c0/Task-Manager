@@ -5,23 +5,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href=" {{ url_for('static', filename='styles.css') }}" >
 	<link rel="short icon" href=" {{ url_for('static', filename='favicon.png') }} " type="image/x-icon">
-	<title lang="en">Task Manager - Pythonic</title>
+	<title lang="en">ToDo List - Pythonic</title>
 </head>
 <body>
 	<header>
-		<span><h1 lang="en">Task Manager</h1></span>
+		<span><h1 lang="en">ToDo List</h1></span>
 	</header>
 	<main>
 		<ul>
 			{% if data %}
-				{% for id, task in data.items() %}
+				{% for id, title in data.items() %}
 					<li>
 						<div id="task-{{ id }}" class="list-item">
 							<input type="checkbox"/>
 							<div class="task-item">
 								<p id="task-id" class="task-id">#{{ id }}</p> 
 								<div class="calculando-flex"> <!--REFATORAR-->
-									<p class="task-title">{{ task }}</p>
+									<p class="task-title">{{ title }}</p>
 								</div>
 								<img lang="en" src="{{ url_for('static', filename='edit-icon.svg') }}" alt="edit icon" />
 								<img lang="en" src="{{ url_for('static', filename='trash-icon.svg') }}" alt="trash icon" onclick="deleteID({{id}})"/>
@@ -53,7 +53,6 @@
 				})
 				.then(comfirm => delete_id = document.getElementById('task-'+id))
 				.then(delete_id => delete_id.outerHTML = '');
-
 		}
 
 	</script>
